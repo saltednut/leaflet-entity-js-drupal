@@ -1,6 +1,6 @@
 <?php
 /**
- * Implements hook_page_alter().
+ * Implements hook_page_build().
  */
 function node_map_page_build(&$page) {
   drupal_add_css('http://cdn.leafletjs.com/leaflet-0.3.1/leaflet.css', 'external');
