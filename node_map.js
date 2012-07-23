@@ -1,5 +1,6 @@
 /**
- * Return current page context as JSON object.
+ * Append a leaflet map to an existing element.
+ * Use existing node data to populate the map.
  */
 function append_node_map(element) {
   return (function ($) {
