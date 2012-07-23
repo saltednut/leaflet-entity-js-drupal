@@ -8,7 +8,7 @@ function append_node_map(element) {
     //leaflet map as #map
     var map = new L.Map('map');
     //load tile layers from cloudmade (brantwynn api)
-    var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/d8f17888797a4f68ad51b58f048257bb/997/256/{z}/{x}/{y}.png', {
+    var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/API_KEY_HERE/997/256/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
       maxZoom: 18
     });
