@@ -1,0 +1,11 @@
+name = Location Example
+core = 7.x
+package = Features
+dependencies[] = features
+dependencies[] = field_sql_storage
+dependencies[] = node
+dependencies[] = number
+features[features_api][] = api:1
+features[field][] = node-location-field_location_latitude
+features[field][] = node-location-field_location_longitude
+features[node][] = location
