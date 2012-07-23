@@ -1,0 +1,4 @@
+name = Node Map Example
+description = Calls a map of nodes and insets into DOM.
+core = 7.x
+scripts[] = node_map.js

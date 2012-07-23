@@ -1,0 +1,9 @@
+<?php
+/**
+ * Implements hook_page_alter().
+ */
+function node_map_page_build(&$page) {
+  drupal_add_css('http://cdn.leafletjs.com/leaflet-0.3.1/leaflet.css', 'external');
+  drupal_add_js('http://cdn.leafletjs.com/leaflet-0.3.1/leaflet.js', 'external');
+}
+
