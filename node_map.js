@@ -8,15 +8,12 @@ function append_node_map(element) {
     $(element).append('<div id="map" style="height: 400px"></div>');
     //leaflet map as #map
     var map = new L.Map('map');
-    //load tile layers from cloudmade (brantwynn api)
-    var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/API_KEY_HERE/997/256/{z}/{x}/{y}.png', {
+    //load tile layers from cloudmade
+    var cloudmade = new L.TileLayer('http://{s}.tile.cloudmade.com/API-KEY-HERE/{z}/{x}/{y}.png', {
       attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
       maxZoom: 18
     });
-    //create a new latlng for London, England
-    var london = new L.LatLng(51.505, -0.09);
-    //set London as the center of the map w/ zoom at lvl 10
-    map.setView(london, 10).addLayer(cloudmade);
+    map.addLayer(cloudmade);
     //Use EFQ to get all 'location' nodes
     conditions = {
       "entityCondition": [
@@ -34,12 +31,16 @@ function append_node_map(element) {
             node.field_location_latitude.und[0].value,
             node.field_location_longitude.und[0].value
         );
+        map.setView(latlng, 12);
         //create a marker and assign it latlng
         var marker = new L.Marker(latlng);
         map.addLayer(marker);
         //drop a view mode for the node into a popup
-        entity_render_view('node', node.nid, 'default').done(function(view) {
-          marker.bindPopup(view);
+        marker.on('mouseover', function(e) {
+          marker.bindPopup('loading...');
+          entity_render_view('node', node.nid, 'default').done(function(view) {
+            marker.bindPopup(view);
+          });
         });
       });
     });
@@ -47,5 +48,5 @@ function append_node_map(element) {
 }
 
 jQuery(document).ready(function($) {
-  append_node_map('.front #block-system-main');
+  append_node_map('.front #main-content');
 });
